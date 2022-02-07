@@ -16,5 +16,5 @@ run:
 
 clean:
 	docker image rm st001
-	docker image ls | grep -e "^<none" | awk '{print $3}' | xargs docker image rm -
+	docker image ls | grep -e "^<none" | awk '{print $$3}' | xargs docker image rm -
 	rm -rf st001
