@@ -1,0 +1,75 @@
+{{ define "main_page" }}
+<!DOCTYPE html>
+<html>
+  <head>
+	{{ template "common_head" }}
+	<title>001-xss</title>
+  </head>
+  <body>
+	<div class="container">
+
+	  <div id="page_info">
+		<h1>Page Info</h1>
+		<p>This is a <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">xss</a>/<a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">csrf</a> tutorial web page. You are expected to:</p>
+		<p>Get cookie, "ID", "Secret" of any user open this page, and send this infomation to your server.</p>
+		<p>Write an html file that if any user open this file on the browser, a new comment of this user will be created and summit.</p>
+	  </div>
+
+	  <hr>
+	  
+	  <div id="user_info">		
+		<h1>User Info</h1>
+
+		<table class="table">
+		  <tbody>
+			<tr>
+			  <th scope="row">ID</th>
+			  <td id="user_id">{{ .ID }}</td>
+			</tr>
+			<tr>
+			  <th scope="row">Secret</th>
+			  <td id="user_secret">{{ .Secret }}</td>
+			</tr>			
+		  </tbody>
+		</table>
+	  </div>
+
+	  <hr>
+
+	  <div id="other contents">
+		<h1>Other Contents</h1>
+		<p>other contens...</p>		  
+	  </div>
+
+	  <hr>
+
+	  <div id="comments_view">
+		<h1>Comments view</h1>
+		<div>
+		  {{ range .Comments }}
+		  <div class="card mt-1 p-1">
+			<div class="badge bg-secondary">
+			  {{ .ID }}
+			</div>
+			{{ .Msg }}
+		  </div>
+		  {{ end }}
+		</div>
+	  </div>
+
+	  <div id="comment_input">
+		<h1>Comments Input</h1>
+		<form action="/new_comment" method="POST">
+		  <div class="mb-3">
+			<label for="input_comments" class="form-label">Input Comments</label>
+			<textarea class="form-control" id="input_comments" name="input_comments" rows="6"></textarea>
+		  </div>
+		  <button type="submit" class="btn btn-primary mb-3">Submit</button>
+		</form>
+	  </div>
+	  
+	</div>
+	{{ template "common_tail" }}	
+  </body>  
+</html>
+{{ end }}
