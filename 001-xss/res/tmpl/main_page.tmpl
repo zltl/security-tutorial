@@ -39,14 +39,20 @@
 	  <hr>
 
 	  <div id="other contents">
-		<h2>Other Contents</h2>
+		<h2>Contents</h2>
 		<p>other contens...</p>
+		<p>...</p>
+		<p>...</p>
+		<p>...</p>
+		<p>...</p>
+		<p>...</p>
+		<p>...</p>
 	  </div>
 
 	  <hr>
 
 	  <div id="comments_view">
-		<h2>Comments view</h2>
+		<h2>Comments</h2>
 		<div>
 		  {{ range .Comments }}
 		  <div class="card mt-1 p-1">
@@ -60,7 +66,6 @@
 	  </div>
 
 	  <div id="comment_input">
-		<h2>Comments Input</h2>
 		<form action="/new_comment" method="POST">
 		  <div class="mb-3">
 			<label for="input_comments" class="form-label">Input Comments</label>
